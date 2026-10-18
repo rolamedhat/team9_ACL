@@ -26,7 +26,7 @@ Era split (five 15-season eras, seed 42, 11/2/2 seasons per era):
 | Driver form (last 5 races, career, circuit) | Strong drivers in strong cars keep finishing near the front, so recent and long-term podium rates carry over to the next race | Correlation table and decile plots (6.8, training seasons only) |
 | Constructor form (last 5 races) | Car performance is shared by a team's drivers and persists from race to race | Correlation table and decile plots (6.8); Q3 shows clear, lasting differences between teams |
 | Standings before the race | The championship table summarises a whole season of form up to the previous race | Correlation table and decile plots (6.8); built only from earlier races (6.7 check); freshness check (6.5.1) |
-| Context (`driver_age`, `home_race`, `round`, `hybrid_era`, `is_sprint_weekend`) | Experience and era may change how results come about; `hybrid_era` because front-row conversion rose after 2014 (Q1) | Yes/no plot (6.8); `home_race` showed no effect once grid is controlled for (Q2), so it is kept only for the ablation to confirm and is a candidate to drop |
+| Context (`driver_age`, `home_race`, `round`, `hybrid_era`) | Experience and era may change how results come about; `hybrid_era` because front-row conversion rose after 2014 (Q1) | Yes/no plot (6.8); `home_race` showed no effect once grid is controlled for (Q2), so it is kept only for the ablation to confirm and is a candidate to drop. `is_sprint_weekend` was dropped: sprints start in 2021, so it is 0 for every training row |
 
 ## Why each feature is valid at the pre-race cutoff
 
@@ -37,4 +37,4 @@ Era split (five 15-season eras, seed 42, 11/2/2 seasons per era):
 | Driver form | `drv_prev_races`, `drv_podium_rate_last5`, `drv_avg_finish_last5`, `drv_career_podium_rate`, `drv_circuit_podium_rate` | Built from earlier races only (`shift(1)`, sorted by date; checked in 6.7) |
 | Constructor form | `cons_podiums_last5`, `cons_avg_finish_last5` | Same, per team |
 | Standings | `drv_pre_points_share`, `drv_pre_wins`, `drv_pre_position`, `cons_pre_points_share`, `cons_pre_position` | Standings after the previous race of the season, not this one (checked in 6.7) |
-| Context | `driver_age`, `home_race`, `round`, `hybrid_era`, `is_sprint_weekend` | Calendar, nationality and date of birth are known in advance |
+| Context | `driver_age`, `home_race`, `round`, `hybrid_era` | Calendar, nationality and date of birth are known in advance |
